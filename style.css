@@ -1,0 +1,51 @@
+@import "https://unpkg.com/open-props" layer(design.system);
+@import "https://unpkg.com/open-props/normalize.min.css" layer(demo.support);
+
+@font-face {
+  font-family: "Roboto Flex";
+  src: url('https://assets.codepen.io/2585/RobotoFlex') format('truetype');
+}
+
+@layer demo {
+  body {
+    --base-weight: 400;
+    --base-grade: 0;
+    
+    font-variation-settings: 
+      "wght" var(--base-weight), 
+      "GRAD" var(--base-grade)
+    ;
+  }
+  
+  @media (prefers-contrast: more) {
+    body {
+      --base-weight: 700;
+    }
+  }
+  
+  @media (prefers-contrast: less) {
+    body {
+      --base-weight: 200;
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    body {
+      --base-grade: -25;
+    }
+  }
+}
+
+@layer demo.support {
+  body {
+    display: grid;
+    place-content: center;
+    padding: var(--size-5);
+    gap: var(--size-5);
+    font-family: Roboto Flex;
+  }
+  
+  h1 {
+    text-wrap: balance;
+  }
+}
